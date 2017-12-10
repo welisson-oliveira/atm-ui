@@ -1,0 +1,40 @@
+<span ng-show="vm.warning">{{vm.message}}</span>
+<h1>{{vm.title}}</h1>
+<form novalidate id="formClient" name="vm.formClient" ng-submit="vm.persist()">
+    <input type="hidden" ng-model="vm.client.id" />
+    <span>name</span>
+    <input type="text" ng-model="vm.client.name" required/>
+    <span>balance</span>
+    <input type="number" ng-model="vm.client.balance" required/>
+    <input type="hidden" ng-model="vm.client.login.id" />
+    <span>account</span>
+    <input type="text" ng-model="vm.client.login.account" required/>
+    <span>password</span>
+    <input type="password" ng-model="vm.client.login.password" ng-change="vm.isValid()" required/>
+    <span>confirm password</span>
+    <input type="password" ng-model="vm.passwordConfirm" ng-change="vm.isValid()" required/>
+    <button type="submit" ng-disabled="vm.disableButton">Salvar</button>
+</form>
+
+<div class="table-responsive">          
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>account</th>
+          <th>balance</th>
+          <th>Edit</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="client in vm.clients">
+        <tr>
+          <td>{{client.name}}</td>
+          <td>{{client.account}}</td>
+          <td>{{client.balance}}</td>
+          <td><button ng-click="vm.edit(client)">Edit</button></td>
+          <td><button ng-click="vm.delete(client.id)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>

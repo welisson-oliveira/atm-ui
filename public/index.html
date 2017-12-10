@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="atm">
+
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width">
+    <title>ATM</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="bower_components/restangular/dist/restangular.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <!-- meus arquivos js -->
+    <script src="routeAccess.js"></script>
+    <script src="routes.js"></script>
+    <script src="rest.js"></script>
+
+    <script src="js/restapi/restapi.js"></script>
+
+    <script src="js/services/login.service.js"></script>
+    <script src="js/services/manage-client.service.js"></script>
+    <script src="js/services/withdraw.service.js"></script>
+
+    <script src="js/controllers/logout.controller.js"></script>
+    <script src="js/controllers/login.controller.js"></script>
+    <script src="js/controllers/manage-client.controller.js"></script>
+    <script src="js/controllers/withdraw.controller.js"></script>
+
+
+</head>
+
+<body>
+    <div class="container" ng-controller="IndexController">
+        <h1 class="text-center">ATM</h1>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#/client">Client</a>
+                    </li>
+                    <li>
+                        <a href="#/withdraw">Withdraw</a>
+                    </li>
+                    <li>
+                        <a href="#/logout">sair</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <ui-view></ui-view>
+    </div>
+    <!-- fim container -->
+    
+</body>
+
+</html>

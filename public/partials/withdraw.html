@@ -1,0 +1,13 @@
+<p>Bem vindo: {{vm.userName}}</p>
+<span ng-show="vm.warning">{{vm.message}}</span>
+<h1>{{vm.title}}</h1>
+<form novalidate id="formWithdraw" name="vm.formWithdraw" ng-submit="vm.withdraw()">
+    <span>value</span>
+    <input type="text" ng-model="vm.payload.value"/>
+    <button type="submit">Confirm</button>
+</form>
+
+<p ng-show="vm.money.hundred">BankNotes of 100: {{vm.money.hundred}}</p>
+<p ng-show="vm.money.fifty">BankNotes of 50: {{vm.money.fifty}}</p>
+<p ng-show="vm.money.twenty">BankNotes of 20: {{vm.money.twenty}}</p>
+<p ng-show="vm.money.ten">BankNotes of 10: {{vm.money.ten}}</p>
