@@ -4,6 +4,6 @@
 	- bower install
 	- npm start
 
-Dados para acessar a aplicação: *accont:* 123, *password:* 123
+Dados para acessar a aplicação: *account:* 123, *password:* 123
 
 Para utilizar essa aplicação é necessário rodar o projeto que esta neste link: https://github.com/welisson-oliveira/atm-server
