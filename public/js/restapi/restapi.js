@@ -25,6 +25,10 @@ function restApi(Restangular) {
             return that.resources([arg]);
         };
 
+        this.update = function(data){
+            return Restangular.copy(data);
+        }
+
     };
 
     // Return public API.

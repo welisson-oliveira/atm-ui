@@ -4,15 +4,19 @@ angular.module('atm')
 function ManageClientService(restFactory){
     const vm = this;
     vm.persist = function(data) {
-        return restFactory.resource(['atm/client/create']).post(data);
+        if(data.id){
+            return data.put();
+        }else{
+            return restFactory.resource(['atm/client']).post(data);
+        }
     }
 
     vm.delete = function(data){
-        return restFactory.resources(['atm/client/delete',data]).remove();
+        return restFactory.resources(['atm/client',data]).remove();
     }
 
     vm.list = function(){
-        return restFactory.resource(['atm/client/list']).getList();
+        return restFactory.resource(['atm/client']).getList();
     }
 
     return {

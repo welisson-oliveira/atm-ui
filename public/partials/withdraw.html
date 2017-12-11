@@ -1,10 +1,15 @@
-<p>Bem vindo: {{vm.userName}}</p>
-<span ng-show="vm.warning">{{vm.message}}</span>
+<p>Welcome: {{vm.userName}}. </p>
+<span class="alert alert-warning" role="alert" ng-show="vm.warning">{{vm.message}}</span>
 <h1>{{vm.title}}</h1>
 <form novalidate id="formWithdraw" name="vm.formWithdraw" ng-submit="vm.withdraw()">
-    <span>value</span>
-    <input type="text" ng-model="vm.payload.value"/>
-    <button type="submit">Confirm</button>
+    <div class="form-group">
+        <label>value</label>
+        <input type="number" class="form-control" ng-model="vm.payload.value" required/>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" ng-disabled="!vm.formWithdraw.$valid">Confirm</button>
+    </div>
+    
 </form>
 
 <p ng-show="vm.money.hundred">BankNotes of 100: {{vm.money.hundred}}</p>

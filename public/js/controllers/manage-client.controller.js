@@ -8,6 +8,7 @@ function ManageClientController($cookies, ManageClientService, RouteAccess) {
     const vm = this;
     vm.title = 'Manage Client';
     vm.warning = false;
+    vm.enableAccount = false;
     
     vm.account = '';
 
@@ -31,6 +32,19 @@ function ManageClientController($cookies, ManageClientService, RouteAccess) {
         vm.disableButton = !(vm.formClient.$valid && vm.client.login.password == vm.passwordConfirm);
     }
 
+    vm.confPassword = function(){
+        var temp = vm.message;
+        if(vm.client.login.password != vm.passwordConfirm && vm.client.login.password && vm.passwordConfirm){
+            vm.message = "wrong confirm password";
+            vm.warning = true;
+        }else{
+            if(temp == "wrong confirm password"){
+                vm.message = "";
+                vm.warning = false;
+            }
+        }
+    }
+
     vm.persist = function(){
         if (vm.formClient.$valid) {
             vm.disableButton = true;
@@ -38,8 +52,10 @@ function ManageClientController($cookies, ManageClientService, RouteAccess) {
                 vm.warning = true;
                 clearAll();
                 vm.list();
+                vm.enableAccount = false;
                 return vm.message = "Cliente salvo com sucesso!";
             }, function(error){
+                vm.isValid();
                 vm.warning = true;
                 return vm.message = error.data.message;
             });
@@ -49,10 +65,15 @@ function ManageClientController($cookies, ManageClientService, RouteAccess) {
     vm.edit = function(client){
         client.login.password = '';
         vm.client = client;
+        vm.enableAccount = true;
+    }
+
+    vm.cancel = function(){
+        clearAll();
+        vm.enableAccount = false;
     }
 
     vm.delete = function(id){
-        console.log(id);
         return ManageClientService.delete(id).then(function(){
             
             vm.list();
