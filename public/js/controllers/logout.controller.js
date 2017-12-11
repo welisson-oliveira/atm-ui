@@ -5,7 +5,6 @@ function LogoutController($cookies, $location) {
     const vm = this;
 
     vm.sair = function () {
-        console.log("aki");
         $cookies.remove('userId');
         $cookies.remove('userName');
         $cookies.remove('userBalance');

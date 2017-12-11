@@ -17,14 +17,12 @@ function LoginController(LoginService, $cookies, $location) {
                
                 $cookies.put('userId', login.id);
                 $cookies.put('userName', login.name);
-                $cookies.put('userBalance', login.balance);
 
                 $location.path('/withdraw');
             },function(error){
                 vm.warning = true;
                 $cookies.remove('userId');
                 $cookies.remove('userName');
-                $cookies.remove('userBalance');
                 return vm.message = error.data.message;
             });
         }
